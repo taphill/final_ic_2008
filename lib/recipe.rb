@@ -10,5 +10,7 @@ class Recipe
     ingredients_required[ingredient] += amount_required
   end
 
-  
+  def ingredients
+    ingredients_required.keys
+  end
 end
