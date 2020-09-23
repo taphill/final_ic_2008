@@ -71,4 +71,24 @@ class CookBookTest < Minitest::Test
 
     assert_equal "04-22-2020", @cookbook.date
   end
+
+  def test_it_can_return_summary
+    skip
+
+    @recipe1.add_ingredient(@ingredient1, 2)
+    @recipe1.add_ingredient(@ingredient2, 8)
+
+    @recipe2.add_ingredient(@ingredient1, 2)
+    @recipe2.add_ingredient(@ingredient3, 4)
+    @recipe2.add_ingredient(@ingredient4, 1)
+
+    @cookbook.add_recipe(@recipe1)
+    @cookbook.add_recipe(@recipe2)
+
+    expected = [{:name=>"Mac and Cheese", :details=>{:ingredients=>[{:ingredient=>"Macaroni", :amount=>"8 oz"}, {:ingredient=>"Cheese", :amount=>"2 C"}], :total_calories=>440}}, 
+                {:name=>"Burger", :details=>{:ingredients=>[{:ingredient=>"Ground Beef", :amount=>"4 oz"}, {:ingredient=>"Bun", :amount=>"100 g"}], :total_calories=>500}}
+    ]
+
+    assert_equal expected, @cookbook.summary
+  end
 end
