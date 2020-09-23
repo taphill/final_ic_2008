@@ -18,4 +18,8 @@ class CookBook
   def highest_calorie_meal
     recipes.max_by(&:total_calories)
   end
+
+  def date
+    Time.now.strftime("%m-%d-%Y")
+  end
 end
